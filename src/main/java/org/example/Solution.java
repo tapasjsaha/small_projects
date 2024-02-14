@@ -1,25 +1,19 @@
 package org.example;
 
 public class Solution {
-    public String firstPalindrome(String[] words) {
-        for(String word : words) {
-            if(isPalindrome(word)){
-                return word;
-            }
-        }
-        return "";
-    }
-
-    private boolean isPalindrome(String word){
-        int i = 0, j = word.length()-1;
-        while(i<j) {
-            if(word.charAt(i) != word.charAt(j)){
-                return false;
-            }
+    public int[] rearrangeArray(int[] nums) {
+        int [] res = new int [nums.length];
+        int pos = 0, neg = 0, i=0;
+        while(pos < nums.length && neg < nums.length){
+            while(nums[pos] < 0){pos += 1;}
+            while(nums[neg] > 0){neg += 1;}
+            res[i] = nums[pos];
             i += 1;
-            j -= 1;
+            pos += 1;
+            res[i] = nums[neg];
+            i+=1;
+            neg += 1;
         }
-        return true;
+        return res;
     }
-
 }

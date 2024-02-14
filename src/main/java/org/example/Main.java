@@ -11,9 +11,13 @@ public class Main {
     public static void main(String[] args) {
 //        int [] nums = {2, 11, 7, 15};
 //        int target = 9;
-        String [] st = {"abc", "abdse","ababaa"};
+//        String [] st = {"abc", "abdse","ababaa"};
+        int [] nums = {-2, -3, 11,-5, 7, 15};
         Solution sol = new Solution();
-        String ans = sol.firstPalindrome(st);
-        System.out.println(ans);
+        int [] ans = sol.rearrangeArray(nums);
+        for(int i = 0; i<ans.length; i++){
+            System.out.println(ans[i]);
+        }
+
     }
 }
