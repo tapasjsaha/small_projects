@@ -1,19 +1,26 @@
 package org.example;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Solution {
-    public int[] rearrangeArray(int[] nums) {
-        int [] res = new int [nums.length];
-        int pos = 0, neg = 0, i=0;
-        while(pos < nums.length && neg < nums.length){
-            while(nums[pos] < 0){pos += 1;}
-            while(nums[neg] > 0){neg += 1;}
-            res[i] = nums[pos];
-            i += 1;
-            pos += 1;
-            res[i] = nums[neg];
-            i+=1;
-            neg += 1;
+    public long largestPerimeter(int[] nums) {
+        Arrays.sort(nums);
+        int numOfEdges = nums.length;
+        long sumOfEdges = 0;
+        for(int i = 0; i<numOfEdges; i++){
+            sumOfEdges += nums[i];
         }
-        return res;
+        int largestSide;
+        while(numOfEdges >= 3){
+            largestSide = nums[numOfEdges-1];
+            if(sumOfEdges-largestSide > largestSide){
+                return sumOfEdges;
+            } else {
+                sumOfEdges -= largestSide;
+                numOfEdges -= 1;
+            }
+        }
+        return (long) -1;
     }
 }
